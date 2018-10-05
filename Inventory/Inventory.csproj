@@ -73,6 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auxilary\MessageBoxes.cs" />
     <Compile Include="DAL.cs" />
     <Compile Include="DAL_New.cs" />
     <Compile Include="DB.cs" />
