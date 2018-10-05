@@ -1,12 +1,17 @@
 ﻿using System.Windows.Forms;
 
-namespace Inventory.Auxilary
+namespace Inventory
 {
     class MessageBoxes
     {
-        public void SuccessMsgBox(string text)
+        public void SuccessMsgBox(string messageText)
         {
-            MessageBox.Show(text, "Inventory1ss123", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(messageText, Properties.Settings.Default.ApplicationName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public void ErrorMsgBox(string messageText)
+        {
+            MessageBox.Show(messageText, Properties.Settings.Default.ApplicationName, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
