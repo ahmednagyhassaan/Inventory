@@ -5,7 +5,7 @@ namespace Inventory
 {
     class DAL_New
     {
-        string _connString;//data source:...; initial cataloge:....;integrated security=true
+        readonly string _connString;//data source:...; initial cataloge:....;integrated security=true
         SqlConnection _conn;
         SqlCommand _command;
         SqlDataAdapter _da;
@@ -13,7 +13,7 @@ namespace Inventory
 
         public DAL_New()
         {
-            _connString = "Data Source=.;Initial Catalog=Project;Integrated Security=True";
+            _connString = Properties.Settings.Default.ConnectionString;
             _conn = new SqlConnection(_connString);
         }
 
