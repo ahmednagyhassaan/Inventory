@@ -83,7 +83,7 @@ namespace Inventory
                     cmddd.ExecuteNonQuery();
                     con.Close();
                     MessageBox.Show("Edited");
-                    frmEmpSearchDelete f = new frmEmpSearchDelete();
+                    FrmEmpSearchDelete f = new FrmEmpSearchDelete();
                     f.Show();
                     this.Close();
                 }
@@ -132,7 +132,7 @@ namespace Inventory
                     con.Close();
                     MessageBox.Show("Added");
                     
-                    frmEmpSearchDelete f = new frmEmpSearchDelete();
+                    FrmEmpSearchDelete f = new FrmEmpSearchDelete();
                     f.Show();
                     this.Close();
                 }
