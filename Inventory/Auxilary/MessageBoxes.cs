@@ -6,7 +6,7 @@ namespace Inventory.Auxilary
     {
         public void SuccessMsgBox(string text)
         {
-            MessageBox.Show(text, "Inventory", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(text, "Inventory1ss", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
