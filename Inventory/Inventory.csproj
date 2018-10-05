@@ -1,0 +1,565 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{34FEC1F6-25C1-453A-99AD-A1C37947B8B5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Inventory</RootNamespace>
+    <AssemblyName>Inventory</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\yasss\Desktop\database_pro\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>06F1A50B8A9DEC612AD0F106692F0604DC6253AC</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Inventory_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAL.cs" />
+    <Compile Include="DAL_New.cs" />
+    <Compile Include="DB.cs" />
+    <Compile Include="Employee\BLLfrmEmpSearchDelete.cs" />
+    <Compile Include="Employee\frmEmpAddEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employee\frmEmpAddEdit.designer.cs">
+      <DependentUpon>frmEmpAddEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\frmEmpSearchDelete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employee\frmEmpSearchDelete.designer.cs">
+      <DependentUpon>frmEmpSearchDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Add_Finish_Item.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Add_Finish_Item.designer.cs">
+      <DependentUpon>frm_Add_Finish_Item.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_contact_Customer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_contact_Customer.designer.cs">
+      <DependentUpon>frm_contact_Customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_contact_Supplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_contact_Supplier.designer.cs">
+      <DependentUpon>frm_contact_Supplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Find_Cus_Invoices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Find_Cus_Invoices.designer.cs">
+      <DependentUpon>frm_Find_Cus_Invoices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Find_Order_Purchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Find_Order_Purchase.designer.cs">
+      <DependentUpon>frm_Find_Order_Purchase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Find_Order_Sales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Find_Order_Sales.designer.cs">
+      <DependentUpon>frm_Find_Order_Sales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Finish_Item_Search.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Finish_Item_Search.designer.cs">
+      <DependentUpon>frm_Finish_Item_Search.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Item_Type.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Item_Type.designer.cs">
+      <DependentUpon>frm_Item_Type.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_new_unit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_new_unit.designer.cs">
+      <DependentUpon>frm_new_unit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Purchase_Invoice_Details.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Purchase_Invoice_Details.designer.cs">
+      <DependentUpon>frm_Purchase_Invoice_Details.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Edit_Add_Finish_To_Store.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Edit_Add_Finish_To_Store.designer.cs">
+      <DependentUpon>frm_Edit_Add_Finish_To_Store.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Find_Add_Finish_To_Store.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Find_Add_Finish_To_Store.designer.cs">
+      <DependentUpon>frm_Find_Add_Finish_To_Store.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Find_Purchase_Invoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Find_Purchase_Invoice.designer.cs">
+      <DependentUpon>frm_Find_Purchase_Invoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Find_Return.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Find_Return.designer.cs">
+      <DependentUpon>frm_Find_Return.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Find_Transferring_From_To.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Find_Transferring_From_To.designer.cs">
+      <DependentUpon>frm_Find_Transferring_From_To.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Cust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Cust.designer.cs">
+      <DependentUpon>frm_Cust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Add_Finish_To_Store.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Add_Finish_To_Store.designer.cs">
+      <DependentUpon>frm_Add_Finish_To_Store.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Purchase_Invoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Purchase_Invoice.designer.cs">
+      <DependentUpon>frm_Purchase_Invoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Purchase_Order.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Purchase_Order.designer.cs">
+      <DependentUpon>frm_Purchase_Order.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Sales_Invoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Sales_Invoice.designer.cs">
+      <DependentUpon>frm_Sales_Invoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Sales_Order.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Sales_Order.designer.cs">
+      <DependentUpon>frm_Sales_Order.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Store.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Store.designer.cs">
+      <DependentUpon>frm_Store.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Supplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Supplier.designer.cs">
+      <DependentUpon>frm_Supplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Find_Cust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Find_Cust.designer.cs">
+      <DependentUpon>frm_Find_Cust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Find_Supplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Find_Supplier.designer.cs">
+      <DependentUpon>frm_Find_Supplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Login.designer.cs">
+      <DependentUpon>frm_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Main_Purch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Main_Purch.Designer.cs">
+      <DependentUpon>frm_Main_Purch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Main_Sales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Main_Sales.Designer.cs">
+      <DependentUpon>frm_Main_Sales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Returns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Returns.designer.cs">
+      <DependentUpon>frm_Returns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Find_Store.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Find_Store.designer.cs">
+      <DependentUpon>frm_Find_Store.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Transferring_From_To.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Transferring_From_To.designer.cs">
+      <DependentUpon>frm_Transferring_From_To.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Employee\frmEmpAddEdit.resx">
+      <DependentUpon>frmEmpAddEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employee\frmEmpSearchDelete.resx">
+      <DependentUpon>frmEmpSearchDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Add_Finish_Item.resx">
+      <DependentUpon>frm_Add_Finish_Item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_contact_Customer.resx">
+      <DependentUpon>frm_contact_Customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_contact_Supplier.resx">
+      <DependentUpon>frm_contact_Supplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Find_Cus_Invoices.resx">
+      <DependentUpon>frm_Find_Cus_Invoices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Find_Order_Purchase.resx">
+      <DependentUpon>frm_Find_Order_Purchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Find_Order_Sales.resx">
+      <DependentUpon>frm_Find_Order_Sales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Finish_Item_Search.resx">
+      <DependentUpon>frm_Finish_Item_Search.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Item_Type.resx">
+      <DependentUpon>frm_Item_Type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_new_unit.resx">
+      <DependentUpon>frm_new_unit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Purchase_Invoice_Details.resx">
+      <DependentUpon>frm_Purchase_Invoice_Details.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Edit_Add_Finish_To_Store.resx">
+      <DependentUpon>frm_Edit_Add_Finish_To_Store.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Find_Add_Finish_To_Store.resx">
+      <DependentUpon>frm_Find_Add_Finish_To_Store.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Find_Purchase_Invoice.resx">
+      <DependentUpon>frm_Find_Purchase_Invoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Find_Return.resx">
+      <DependentUpon>frm_Find_Return.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Find_Transferring_From_To.resx">
+      <DependentUpon>frm_Find_Transferring_From_To.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Cust.resx">
+      <DependentUpon>frm_Cust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Add_Finish_To_Store.resx">
+      <DependentUpon>frm_Add_Finish_To_Store.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Purchase_Invoice.resx">
+      <DependentUpon>frm_Purchase_Invoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Purchase_Order.resx">
+      <DependentUpon>frm_Purchase_Order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Sales_Invoice.resx">
+      <DependentUpon>frm_Sales_Invoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Sales_Order.resx">
+      <DependentUpon>frm_Sales_Order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Store.resx">
+      <DependentUpon>frm_Store.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Supplier.resx">
+      <DependentUpon>frm_Supplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Find_Cust.resx">
+      <DependentUpon>frm_Find_Cust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Find_Supplier.resx">
+      <DependentUpon>frm_Find_Supplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Login.resx">
+      <DependentUpon>frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Main_Purch.resx">
+      <DependentUpon>frm_Main_Purch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Main_Sales.resx">
+      <DependentUpon>frm_Main_Sales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Returns.resx">
+      <DependentUpon>frm_Returns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Find_Store.resx">
+      <DependentUpon>frm_Find_Store.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Transferring_From_To.resx">
+      <DependentUpon>frm_Transferring_From_To.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled-1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled-2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled-11.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tk.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tk1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bubbles-abstract-wallpaper-445x278-1338.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Office-Customer-Male-Light-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled-11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dsfg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Groups-Meeting-Dark-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Supplier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ghjiko.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ghjiko1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notebook-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notebook-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notebook-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\frtgyhj.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cvdgfbnjkm,.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitlfllghed-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untittryuiled-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\customer-relationship-management-euroCaribbean.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled-psdyugnhb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tryop[%27.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tryop[%271.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\return.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\purchase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fsgtykjl%3b%27.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\customer-relationship-management-euroCaribbean1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fgtyhikjolp[.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fgtyhikjolp[1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cxfghjkl%3b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fgtyhikjolp[2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitlefrtyuiod-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled-2dfghj.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled-2dfghj1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitfgp%3b%27[]led-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitfgp%3b%27[]led-21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled-21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iStock_Inventory_Global_mouse-XSmall-resized-6001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
