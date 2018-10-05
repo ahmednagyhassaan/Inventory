@@ -74,7 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL.cs" />
-    <Compile Include="DAL_New.cs" />
+    <Compile Include="Auxilary\DAL_New.cs" />
     <Compile Include="DB.cs" />
     <Compile Include="Employee\BLLfrmEmpSearchDelete.cs" />
     <Compile Include="Employee\frmEmpAddEdit.cs">
