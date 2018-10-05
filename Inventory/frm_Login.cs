@@ -7,11 +7,13 @@ namespace Inventory
 {
     public partial class frm_Login : Form
     {
-        DAL_New _dal;
+        private DAL_New _dal;
+        private MessageBoxes _msgBoxes;
         public frm_Login()
         {
             InitializeComponent();
             _dal = new DAL_New();
+            _msgBoxes=new MessageBoxes();
         }
         private void btn_Login_Click(object sender, EventArgs e)
         {
@@ -36,13 +38,13 @@ namespace Inventory
                 }
                 else
                 {
-                    MessageBox.Show("Wrong Name or Password.", "Inventory", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _msgBoxes.ErrorMsgBox("Wrong Name or Password");
                 }
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Inventory", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _msgBoxes.ErrorMsgBox(ex.Message);
             }
         }
     }
