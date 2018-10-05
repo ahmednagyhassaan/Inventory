@@ -5,7 +5,8 @@ namespace Inventory
 {
     static class Program
     {
-  
+
+        [STAThread]
         static void Main()
         {
           frm_Login ob1 = new frm_Login();

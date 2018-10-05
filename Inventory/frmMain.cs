@@ -114,13 +114,13 @@ namespace Inventory
 
         private void searchEditToolStripMenuItem7_Click(object sender, EventArgs e)
         {
-            frmEmpSearchDelete f = new frmEmpSearchDelete();
+            FrmEmpSearchDelete f = new FrmEmpSearchDelete();
             f.Show();
         }
 
         private void deleteToolStripMenuItem11_Click(object sender, EventArgs e)
         {
-            frmEmpSearchDelete f = new frmEmpSearchDelete();
+            FrmEmpSearchDelete f = new FrmEmpSearchDelete();
             f.Show();
         }
 
@@ -134,7 +134,7 @@ namespace Inventory
         private void button6_Click(object sender, EventArgs e)
         {
 
-            frmEmpSearchDelete f = new frmEmpSearchDelete();
+            FrmEmpSearchDelete f = new FrmEmpSearchDelete();
             f.Show();
         }
 
@@ -212,7 +212,7 @@ namespace Inventory
 
         private void editToolStripMenuItem5_Click(object sender, EventArgs e)
         {
-            frmEmpSearchDelete f = new frmEmpSearchDelete();
+            FrmEmpSearchDelete f = new FrmEmpSearchDelete();
             f.Show();
         }
 
