@@ -1,61 +1,54 @@
 ﻿using System;
-using System.Data;
-using System.Windows.Forms;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 using Inventory.Employee;
-
 
 namespace Inventory
 {
-    public partial class frmEmpSearchDelete : Form
+    public partial class FrmEmpSearchDelete : Form
     {
-        BLLfrmEmpSearchDelete  BLL;
-        public frmEmpSearchDelete()
+        private readonly BLLfrmEmpSearchDelete _bll = new BLLfrmEmpSearchDelete();
+        private readonly MessageBoxes _messageBoxes = new MessageBoxes();
+        private readonly AutoCompleteStringCollection _autoCompleteStringCollection = new AutoCompleteStringCollection();
+        private readonly BindingSource _bindingSource=new BindingSource();
+        public FrmEmpSearchDelete()
         {
             InitializeComponent();
-            BLL = new BLLfrmEmpSearchDelete();
-        }
-
-        private void Close_Click(object sender, EventArgs e)
-        {
-
-        }
+            txtEmpName.AutoCompleteCustomSource = _autoCompleteStringCollection;
+       }
 
 
-
-        private void btn_Add_Employee_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbx_Search_Dept_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void cbo_Way_Of_Search_SelectedValueChanged(object sender, EventArgs e)
         {
-            txt_ID.Text = "";
-            txt_Name.Text = "";
-            cbo_Dept_Name.SelectedIndex = -1;
-            if (cbo_Way_Of_Search.SelectedItem == "All")
+            txtEmpID.Text = "";
+            txtEmpName.Text = "";
+            cmbDept.DataSource = null;
+            dgv_Emp_Find.DataSource = null;
+            if (cmbSrchWay.SelectedItem == "All")
             {
                 groupBox1.Enabled = false;
-                //dgv_Emp_Find.DataSource = DAL.ExecuteQuery("SELECT  [Emp_ID],b.[Name] as Name,a.[Name] as Dept_Name,[Certifications],[Salary],[Date_Of_Birth] ,[Hire_Date],[phone] FROM dbo.Employee as b ,[dbo].[Department]as a where b.[Dept_ID]=a.[Dept_ID] and [Still_Work] ='true'");
+                btn_Search_Click(null, null);
             }
-            else if (cbo_Way_Of_Search.SelectedItem == "Search By")
+            else if (cmbSrchWay.SelectedItem == "Search By")
             {
                 groupBox1.Enabled = true;
-                BLL.FillCboDepartment(cbo_Dept_Name);
+                try
+                {
+                    _bll.FillCmbDepartment(cmbDept);
+                    txtEmpID.AutoCompleteCustomSource = _bll.FillAutoCompleteStringCollectionWithEmpId();
+                    txtEmpName.AutoCompleteCustomSource = _bll.FillAutoCompleteStringCollectionWithEmpName();
+                    cmbDept.AutoCompleteCustomSource = _bll.FillAutoCompleteStringCollectionWithDeptName();
+                }
+                catch (Exception ex)
+                {
+                    _messageBoxes.ErrorMsgBox(ex.Message);
+                }
             }
 
         }
 
-        private void grid_Load()
-        {
-            
-            
-        }
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
@@ -66,59 +59,57 @@ namespace Inventory
 
         private void btn_Search_Click(object sender, EventArgs e)
         {
-            //    try
-            //    {
-            //    String Sql_Cmd_Text = "SELECT  [Emp_ID],b.[Name] as Name,a.[Name] as Dept_Name,[Certifications],[Salary],[Date_Of_Birth] ,[Hire_Date],[phone]FROM   dbo.Employee as b ,[dbo].[Department]as a where b.[Dept_ID]=a.[Dept_ID] and [Still_Work] ='true'";
-            //    SqlCommand cmd = new SqlCommand("", Conn);
+            try
+            {
+                String sqlCmdText = "SELECT e.Emp_ID AS ID,e.Name,d.Name AS DepartmentName FROM dbo.Employee e JOIN dbo.Department d ON e.Dept_ID=d.Dept_ID";
+                if (groupBox1.Enabled)
+                {
+                    sqlCmdText += " Where ";
+                    List<SqlParameter> sqlParameters = new List<SqlParameter>();
+                    if (txtEmpID.Text != string.Empty)
+                    {
+                        sqlCmdText += "e.Emp_ID=@ID AND ";
+                        SqlParameter a = new SqlParameter("@ID", txtEmpID.Text);
+                        sqlParameters.Add(a);
+                    }
+                    if (txtEmpName.Text.Trim() != string.Empty)
+                    {
+                        sqlCmdText += "e.Name='@Name' AND ";
+                        SqlParameter b = new SqlParameter("@Name", txtEmpName.Text);
+                        sqlParameters.Add(b);
+                    }
+                    if (cmbDept.SelectedIndex != -1)
+                    {
+                        sqlCmdText += "e.Dept_ID=@DeptID and ";
+                        SqlParameter c = new SqlParameter("@DeptID", cmbDept.SelectedIndex);
+                        sqlParameters.Add(c);
+                    }
+                    if (sqlParameters.Count != 0)
+                    {
+                        sqlCmdText = sqlCmdText.Remove(sqlCmdText.Length - 4, 4);
+                        dgv_Emp_Find.DataSource = _bll.GetEmpDataTable(sqlCmdText, sqlParameters.ToArray());
+                    }
+                    else
+                    {
+                        _messageBoxes.ErrorMsgBox("Please select at least one criteria");
+                        cmbSrchWay.SelectedItem = "Search By";
+                        cbo_Way_Of_Search_SelectedValueChanged(null, null);
+                    }
+                }
+                else
+                {
+                    dgv_Emp_Find.DataSource = _bindingSource.DataSource= _bll.GetEmpDataTable(sqlCmdText);
+                }
 
+            }
+            catch (Exception exp)
+            {
 
-            //    if (txt_ID.Text != string.Empty)
-            //    {
-            //        Sql_Cmd_Text += " AND [Emp_ID]=@ID";
-            //        cmd.Parameters.AddWithValue("@ID", int.Parse(txt_ID.Text));
-            //    }
-            //    if (txt_Name.Text != string.Empty)
-            //    {
-            //        Sql_Cmd_Text += " AND b.[Name] like @Name";
-            //        cmd.Parameters.AddWithValue("@Name", txt_Name.Text + "%");
-            //    }
-            //    if (cbo_Dept_Name.Text != string.Empty)
-            //    {
-            //        Sql_Cmd_Text += " AND  b.[Dept_ID]= @Dept_ID";
-            //        cmd.Parameters.AddWithValue("@Dept_ID", cbo_Dept_Name.SelectedValue);
-            //    }
-
-            //    cmd.CommandText = Sql_Cmd_Text;
-            //    SqlDataAdapter dad = new SqlDataAdapter(cmd);
-            //    DataTable DT = new DataTable();
-            //    dad.Fill(DT);
-            //    dgv_Emp_Find.DataSource = DAL.ExecuteQuery("");
-
-            //}
-            //catch (Exception exp)
-            //{
-
-            //    MessageBox.Show(exp.Message);
-            //}
+                MessageBox.Show(exp.Message);
+            }
         }
 
-        private void frm_Find_Emp_Load(object sender, EventArgs e)
-        {
-            Load_cbo();
-        }
-        private void Load_cbo()
-        {
-            //SqlCommand cmd = new SqlCommand("SELECT [Dept_ID],[Name] ,[Manager_ID] FROM [dbo].[Department]", Conn);
-            //SqlDataAdapter dad = new SqlDataAdapter(cmd);
-            //DataTable DT = new DataTable();
-            //dad.Fill(DT);
-            //cbo_Dept_Name.DataSource = DT;
-            //cbo_Dept_Name.ValueMember = "Dept_ID";
-            //cbo_Dept_Name.DisplayMember = "Name";
-            //cbo_Dept_Name.SelectedIndex = -1;
-        }
-
-        private void btn_Edit_Click(object sender, EventArgs e)
+      private void btn_Edit_Click(object sender, EventArgs e)
         {
             try
             {
@@ -149,12 +140,6 @@ namespace Inventory
 
                 MessageBox.Show(" you must select  Employee first");
             }
-        }
-
-        private void txt_ID_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            const char Delete = (char)8;
-            e.Handled = !Char.IsDigit(e.KeyChar) && e.KeyChar != Delete;
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)
@@ -206,9 +191,5 @@ namespace Inventory
 
         }
 
-        private void cbo_Way_Of_Search_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
