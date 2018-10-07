@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Inventory
+namespace Inventory.CustomControls
 {
     class NumTextBox : TextBox
     {
