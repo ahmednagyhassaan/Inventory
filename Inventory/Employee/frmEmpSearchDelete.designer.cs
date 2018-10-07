@@ -34,7 +34,6 @@ namespace Inventory
             this.label4 = new System.Windows.Forms.Label();
             this.cmbDept = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtEmpName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cmbSrchWay = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -42,6 +41,7 @@ namespace Inventory
             this.btn_Search = new System.Windows.Forms.Button();
             this.txtEmpID = new Inventory.CustomControls.NumTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtEmpName = new Inventory.CustomControls.NameTextBox();
             this.btn_Delete = new System.Windows.Forms.Button();
             this.btn_Edit = new System.Windows.Forms.Button();
             this.btn_Add = new System.Windows.Forms.Button();
@@ -93,17 +93,6 @@ namespace Inventory
             this.label6.Size = new System.Drawing.Size(75, 16);
             this.label6.TabIndex = 23;
             this.label6.Text = "Department";
-            // 
-            // txtEmpName
-            // 
-            this.txtEmpName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.txtEmpName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtEmpName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtEmpName.Location = new System.Drawing.Point(0, 0);
-            this.txtEmpName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtEmpName.Name = "txtEmpName";
-            this.txtEmpName.Size = new System.Drawing.Size(559, 23);
-            this.txtEmpName.TabIndex = 24;
             // 
             // label7
             // 
@@ -194,6 +183,16 @@ namespace Inventory
             this.panel1.Size = new System.Drawing.Size(559, 38);
             this.panel1.TabIndex = 29;
             // 
+            // txtEmpName
+            // 
+            this.txtEmpName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtEmpName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtEmpName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtEmpName.Location = new System.Drawing.Point(0, 0);
+            this.txtEmpName.Name = "txtEmpName";
+            this.txtEmpName.Size = new System.Drawing.Size(559, 23);
+            this.txtEmpName.TabIndex = 0;
+            // 
             // btn_Delete
             // 
             this.btn_Delete.Dock = System.Windows.Forms.DockStyle.Right;
@@ -262,7 +261,9 @@ namespace Inventory
             // 
             // PgdDGV
             // 
+            this.PgdDGV.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PgdDGV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PgdDGV.Enabled = false;
             this.PgdDGV.Location = new System.Drawing.Point(0, 197);
             this.PgdDGV.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.PgdDGV.Name = "PgdDGV";
@@ -285,7 +286,7 @@ namespace Inventory
             this.MaximizeBox = false;
             this.Name = "FrmEmpSearchDelete";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "    Employee Search";
+            this.Text = " Employee Search";
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -303,7 +304,6 @@ namespace Inventory
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbDept;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtEmpName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cmbSrchWay;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -317,5 +317,6 @@ namespace Inventory
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel2;
         private PagedDataGridView PgdDGV;
+        private NameTextBox txtEmpName;
     }
 }

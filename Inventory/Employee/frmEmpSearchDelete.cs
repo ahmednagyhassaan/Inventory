@@ -64,22 +64,22 @@ namespace Inventory
                 {
                     sqlCmdText += " Where ";
                     List<SqlParameter> sqlParameters = new List<SqlParameter>();
-                    if (txtEmpID.Text != "")
+                    if (txtEmpID.Text != string.Empty)
                     {
                         sqlCmdText += "e.Emp_ID=@ID AND ";
                         SqlParameter a = new SqlParameter("@ID", txtEmpID.Text);
                         sqlParameters.Add(a);
                     }
-                    if (txtEmpName.Text.Trim() != "")
+                    if (txtEmpName.Text.Trim() != string.Empty)
                     {
-                        sqlCmdText += "e.Name='@Name' AND ";
+                        sqlCmdText += "e.Name=@Name AND ";
                         SqlParameter b = new SqlParameter("@Name", txtEmpName.Text);
                         sqlParameters.Add(b);
                     }
-                    if (cmbDept.SelectedIndex != -1)
+                    if (Convert.ToInt16(cmbDept.SelectedValue) != -1)
                     {
                         sqlCmdText += "e.Dept_ID=@DeptID and ";
-                        SqlParameter c = new SqlParameter("@DeptID", cmbDept.SelectedIndex);
+                        SqlParameter c = new SqlParameter("@DeptID", cmbDept.SelectedValue);
                         sqlParameters.Add(c);
                     }
                     if (sqlParameters.Count != 0)
@@ -97,7 +97,6 @@ namespace Inventory
                 }
                 else
                 {
-                    PgdDGV.DataSource = _bll.GetEmpDataTable(sqlCmdText);
                     PgdDGV.DataSource= _bll.GetEmpDataTable(sqlCmdText);
                 }
 
@@ -105,7 +104,7 @@ namespace Inventory
             catch (Exception exp)
             {
 
-                MessageBox.Show(exp.Message);
+                _messageBoxes.ErrorMsgBox(exp.Message);
             }
         }
 

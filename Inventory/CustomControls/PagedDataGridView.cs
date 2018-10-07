@@ -23,21 +23,13 @@ namespace Inventory.CustomControls
             {
                 _dt = value;
                 _totalRecords = _dt == null ? 0 : _dt.Rows.Count;
+                lblTotalCount.Text = _dt != null && _dt.Rows.Count > 0? $"Total count: {_totalRecords}":string.Empty;
+                Enabled = _dt != null && _dt.Rows.Count>0;
                 bindingSource.DataSource = _dt == null ? null : new PageOffsetList();
             }
         }
 
-        [Browsable(true)]
-        public DataGridView DataGridView
-        {
-            get { return dataGridView1; }
-        }
-        public BindingNavigator BindingNavigator
-        {
-            get { return bindingNavigator; }
-        }
-
-        #endregion
+       #endregion
 
 
         public PagedDataGridView()
@@ -50,11 +42,27 @@ namespace Inventory.CustomControls
 
         private void bindingSource_CurrentChanged(object sender, EventArgs e)
         {
-            int offset = (int)bindingSource.Current;
+            if (bindingSource.DataSource == null)
+            {
+                dataGridView1.DataSource = null;
+                return;
+            }
+            int offset =(int?) bindingSource.Current ?? 0;
             DataTable x = _dt.Clone();
             for (int i = offset; i < offset + pageSize && i < _totalRecords; i++)
                 x.ImportRow(_dt.Rows[i]);
             dataGridView1.DataSource = x;
+        }
+
+        private void txtPageSize_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                pageSize = Convert.ToInt16(txtPageSize.Text);
+
+            }
+            catch (Exception) { }
+            bindingSource.DataSource = new PageOffsetList();
         }
 
         class PageOffsetList : IListSource
@@ -71,10 +79,31 @@ namespace Inventory.CustomControls
             public bool ContainsListCollection { get; }
         }
 
-        private void txtPageSize_Leave(object sender, EventArgs e)
+        class NumToolStripTextBox : ToolStripTextBox
         {
-            pageSize = Convert.ToInt16(txtPageSize.Text);
-            bindingSource.DataSource=new PageOffsetList();
+            public NumToolStripTextBox()
+            {
+                this.KeyPress += TextBox_KeyPress;
+            }
+
+            private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
+            {
+                e.Handled = !(char.IsNumber(e.KeyChar) || char.IsControl(e.KeyChar));
+            }
+
+            public override string Text
+            {
+                get { return TextBox.Text; }
+                set
+                {
+                    try
+                    {
+                        pageSize = Convert.ToInt16(value);
+                        TextBox.Text= value;
+                    }
+                    catch (Exception){}
+                }
+            }
         }
     }
 

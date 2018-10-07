@@ -7,7 +7,7 @@ namespace Inventory
         public override string Text
         {
             get { return base.Text.Remove(0, base.Text.IndexOf('-')+1); }
-            set { base.Text = $"{Properties.Settings.Default.ApplicationName} - {value}"; }
+            set { base.Text = $"{Properties.Settings.Default.ApplicationName} - {value.Trim()}"; }
         }
     }
 }
