@@ -47,6 +47,7 @@ namespace Inventory
             this.btn_Add = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnDetails = new System.Windows.Forms.Button();
             this.PgdDGV = new Inventory.CustomControls.PagedDataGridView();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -197,7 +198,7 @@ namespace Inventory
             // 
             this.btn_Delete.Dock = System.Windows.Forms.DockStyle.Right;
             this.btn_Delete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_Delete.Location = new System.Drawing.Point(545, 0);
+            this.btn_Delete.Location = new System.Drawing.Point(432, 0);
             this.btn_Delete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(113, 43);
@@ -210,7 +211,7 @@ namespace Inventory
             // 
             this.btn_Edit.Dock = System.Windows.Forms.DockStyle.Right;
             this.btn_Edit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_Edit.Location = new System.Drawing.Point(441, 0);
+            this.btn_Edit.Location = new System.Drawing.Point(328, 0);
             this.btn_Edit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Edit.Name = "btn_Edit";
             this.btn_Edit.Size = new System.Drawing.Size(104, 43);
@@ -223,14 +224,13 @@ namespace Inventory
             // 
             this.btn_Add.Dock = System.Windows.Forms.DockStyle.Right;
             this.btn_Add.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_Add.Location = new System.Drawing.Point(344, 0);
+            this.btn_Add.Location = new System.Drawing.Point(231, 0);
             this.btn_Add.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Add.Name = "btn_Add";
             this.btn_Add.Size = new System.Drawing.Size(97, 43);
             this.btn_Add.TabIndex = 34;
             this.btn_Add.Text = "Add Employee";
             this.btn_Add.UseVisualStyleBackColor = true;
-            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -253,11 +253,25 @@ namespace Inventory
             this.panel2.Controls.Add(this.btn_Add);
             this.panel2.Controls.Add(this.btn_Edit);
             this.panel2.Controls.Add(this.btn_Delete);
+            this.panel2.Controls.Add(this.btnDetails);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 491);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(658, 43);
             this.panel2.TabIndex = 38;
+            // 
+            // btnDetails
+            // 
+            this.btnDetails.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnDetails.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDetails.Location = new System.Drawing.Point(545, 0);
+            this.btnDetails.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnDetails.Name = "btnDetails";
+            this.btnDetails.Size = new System.Drawing.Size(113, 43);
+            this.btnDetails.TabIndex = 37;
+            this.btnDetails.Text = "Show Details";
+            this.btnDetails.UseVisualStyleBackColor = true;
+            this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
             // 
             // PgdDGV
             // 
@@ -318,5 +332,6 @@ namespace Inventory
         private System.Windows.Forms.Panel panel2;
         private PagedDataGridView PgdDGV;
         private NameTextBox txtEmpName;
+        private System.Windows.Forms.Button btnDetails;
     }
 }

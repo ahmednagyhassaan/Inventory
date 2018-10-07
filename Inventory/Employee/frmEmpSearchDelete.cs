@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows.Forms;
 using Inventory.Employee;
 
@@ -8,13 +10,12 @@ namespace Inventory
 {
     internal partial class FrmEmpSearchDelete : BaseForm
     {
-        private readonly BLLfrmEmpSearchDelete _bll = new BLLfrmEmpSearchDelete();
+        private readonly BLLEmployee _bll = new BLLEmployee();
         private readonly MessageBoxes _messageBoxes = new MessageBoxes();
-        private readonly AutoCompleteStringCollection _autoCompleteStringCollection = new AutoCompleteStringCollection();
         public FrmEmpSearchDelete()
         {
             InitializeComponent();
-       }
+        }
 
 
 
@@ -48,18 +49,18 @@ namespace Inventory
         }
 
 
-        private void btn_Add_Click(object sender, EventArgs e)
-        {
-            frmEmpAddEdit fae = new frmEmpAddEdit("add");
-            fae.Show();
-            this.Close();
-        }
+        //private void btn_Add_Click(object sender, EventArgs e)
+        //{
+        //    frmEmpAddEdit fae = new frmEmpAddEdit("add");
+        //    fae.Show();
+        //    this.Close();
+        //}
 
         private void btn_Search_Click(object sender, EventArgs e)
         {
             try
             {
-                String sqlCmdText = "SELECT e.Emp_ID AS ID,e.Name,d.Name AS DepartmentName FROM dbo.Employee e JOIN dbo.Department d ON e.Dept_ID=d.Dept_ID";
+                String sqlCmdText = "SELECT e.Emp_ID, e.Name,d.Name AS DepartmentName,d.Dept_ID,e.Date_Of_Birth,e.Certifications,e.Address,e.Salary,e.Hire_Date,e.Dept_ID,e.phone from dbo.Employee e JOIN dbo.Department d ON e.Dept_ID = d.Dept_ID";
                 if (groupBox1.Enabled)
                 {
                     sqlCmdText += " Where ";
@@ -76,7 +77,7 @@ namespace Inventory
                         SqlParameter b = new SqlParameter("@Name", txtEmpName.Text);
                         sqlParameters.Add(b);
                     }
-                    if (Convert.ToInt16(cmbDept.SelectedValue) != -1)
+                    if (Convert.ToInt16(cmbDept.SelectedValue) != 0)
                     {
                         sqlCmdText += "e.Dept_ID=@DeptID and ";
                         SqlParameter c = new SqlParameter("@DeptID", cmbDept.SelectedValue);
@@ -99,6 +100,7 @@ namespace Inventory
                 {
                     PgdDGV.DataSource= _bll.GetEmpDataTable(sqlCmdText);
                 }
+                DisplayOnlyColumns(new[] {"Emp_ID", "Name", "DepartmentName"});
 
             }
             catch (Exception exp)
@@ -108,7 +110,20 @@ namespace Inventory
             }
         }
 
-      private void btn_Edit_Click(object sender, EventArgs e)
+        private void DisplayOnlyColumns(string[] ColNameArray)
+        {
+            PgdDGV.SuspendLayout();
+            foreach (DataGridViewColumn col in PgdDGV.DataGridView.Columns)
+            {
+                if (ColNameArray.Contains(col.Name))
+                    col.Visible = true;
+                else
+                    col.Visible = false;
+            }
+            PgdDGV.ResumeLayout();
+        }
+
+        private void btn_Edit_Click(object sender, EventArgs e)
         {
         //    try
         //    {
@@ -190,5 +205,15 @@ namespace Inventory
 
         }
 
+        private void btnDetails_Click(object sender, EventArgs e)
+        {
+            if (PgdDGV.DataGridView.SelectedRows.Count != 0)
+            {
+                using (var x = new frmEmpAddEdit(((DataTable)PgdDGV.DataGridView.DataSource).Copy().Select($"Emp_ID={PgdDGV.DataGridView.SelectedRows[0].Cells[0].Value}").CopyToDataTable()))
+                {
+                    x.ShowDialog();
+                }
+            }
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Inventory.CustomControls
@@ -27,6 +28,11 @@ namespace Inventory.CustomControls
                 Enabled = _dt != null && _dt.Rows.Count>0;
                 bindingSource.DataSource = _dt == null ? null : new PageOffsetList();
             }
+        }
+
+        public DataGridView DataGridView
+        {
+            get { return dataGridView1; }
         }
 
        #endregion
@@ -103,6 +109,14 @@ namespace Inventory.CustomControls
                     }
                     catch (Exception){}
                 }
+            }
+        }
+
+        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            if (e.RowIndex%2 == 0)
+            {
+                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor=Color.Red;
             }
         }
     }

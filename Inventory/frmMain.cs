@@ -127,8 +127,8 @@ namespace Inventory
         private void addToolStripMenuItem11_Click(object sender, EventArgs e)
         {
 
-            frmEmpAddEdit fae = new frmEmpAddEdit("add");
-            fae.Show();
+            //frmEmpAddEdit fae = new frmEmpAddEdit("add");
+            //fae.Show();
         }
 
         private void button6_Click(object sender, EventArgs e)

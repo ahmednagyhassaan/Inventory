@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace Inventory.Employee
 {
-    class BLLfrmEmpSearchDelete
+    class BLLEmployee
     {
         DAL_New _dal= new DAL_New();
         public void FillCmbDepartment(ComboBox cmBox)
