@@ -20,9 +20,9 @@ namespace Inventory.Employee
         {
             DataTable dt = _dal.ExecuteQuery("SELECT [Name] FROM [dbo].[Employee]");
             AutoCompleteStringCollection collection=new AutoCompleteStringCollection();
-            foreach (DataRow dr in dt.Rows)
+            for (int i = 0; i < dt.Rows.Count-1; i++)
             {
-                collection.Add(dr[0].ToString());
+                collection.Add(dt.Rows[i][0].ToString());
             }
             return collection;
         }
@@ -31,9 +31,9 @@ namespace Inventory.Employee
         {
             DataTable dt = _dal.ExecuteQuery("SELECT Emp_ID FROM [dbo].[Employee]");
             AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
-            foreach (DataRow dr in dt.Rows)
+            for (int i = 0; i < dt.Rows.Count - 1; i++)
             {
-                collection.Add(dr[0].ToString());
+                collection.Add(dt.Rows[i][0].ToString());
             }
             return collection;
         }
@@ -42,16 +42,16 @@ namespace Inventory.Employee
         {
             DataTable dt = _dal.ExecuteQuery("SELECT Name FROM [dbo].[Department]");
             AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
-            foreach (DataRow dr in dt.Rows)
+            for (int i = 0; i < dt.Rows.Count - 1; i++)
             {
-                collection.Add(dr[0].ToString());
+                collection.Add(dt.Rows[i][0].ToString());
             }
             return collection;
         }
 
         public DataTable GetEmpDataTable(string query, SqlParameter[] sqlParameters=null)
         {
-            DataTable dt=new DataTable();
+            DataTable dt = new DataTable();
             dt = _dal.ExecuteQuery(query, sqlParameters);
             return dt;
         }

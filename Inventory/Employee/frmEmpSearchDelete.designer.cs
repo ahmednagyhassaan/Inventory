@@ -285,7 +285,7 @@ namespace Inventory
             this.MaximizeBox = false;
             this.Name = "FrmEmpSearchDelete";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "  Employee Search";
+            this.Text = "    Employee Search";
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

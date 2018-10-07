@@ -14,7 +14,6 @@ namespace Inventory
         public FrmEmpSearchDelete()
         {
             InitializeComponent();
-            txtEmpName.AutoCompleteCustomSource = _autoCompleteStringCollection;
        }
 
 
@@ -65,13 +64,13 @@ namespace Inventory
                 {
                     sqlCmdText += " Where ";
                     List<SqlParameter> sqlParameters = new List<SqlParameter>();
-                    if (txtEmpID.Text != string.Empty)
+                    if (txtEmpID.Text != "")
                     {
                         sqlCmdText += "e.Emp_ID=@ID AND ";
                         SqlParameter a = new SqlParameter("@ID", txtEmpID.Text);
                         sqlParameters.Add(a);
                     }
-                    if (txtEmpName.Text.Trim() != string.Empty)
+                    if (txtEmpName.Text.Trim() != "")
                     {
                         sqlCmdText += "e.Name='@Name' AND ";
                         SqlParameter b = new SqlParameter("@Name", txtEmpName.Text);
