@@ -34,7 +34,7 @@ namespace Inventory.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Inventory")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Inevntory App")]
         public string ApplicationName {
             get {
                 return ((string)(this["ApplicationName"]));

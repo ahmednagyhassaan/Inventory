@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Inventory
 {
-    public partial class Frm_Main : Form
+    internal partial class Frm_Main : BaseForm
     {
         //string User_Name;
         public Frm_Main(string n)

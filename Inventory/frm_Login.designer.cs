@@ -47,9 +47,8 @@
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(90, 25);
-            this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(152, 28);
+            this.txtName.Size = new System.Drawing.Size(152, 23);
             this.txtName.TabIndex = 1;
             // 
             // label2
@@ -98,7 +97,7 @@
             this.MaximizeBox = false;
             this.Name = "frm_Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login";
+            this.Text = " Login";
             this.ResumeLayout(false);
             this.PerformLayout();
 

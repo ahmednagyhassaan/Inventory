@@ -6,7 +6,7 @@
       <Value Profile="(Default)">Data Source=.;Initial Catalog=Project;Integrated Security=True</Value>
     </Setting>
     <Setting Name="ApplicationName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Inventory</Value>
+      <Value Profile="(Default)">Inevntory App</Value>
     </Setting>
   </Settings>
 </SettingsFile>

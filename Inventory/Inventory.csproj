@@ -74,9 +74,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auxilary\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Auxilary\MessageBoxes.cs" />
-    <Compile Include="Auxilary\NumTextBox.cs">
+    <Compile Include="CustomControls\NumToolStripTextBox.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControls\NumTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControls\PagedDataGridView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\PagedDataGridView.Designer.cs">
+      <DependentUpon>PagedDataGridView.cs</DependentUpon>
     </Compile>
     <Compile Include="DAL.cs" />
     <Compile Include="Auxilary\DAL_New.cs" />
@@ -288,6 +300,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CustomControls\PagedDataGridView.resx">
+      <DependentUpon>PagedDataGridView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Employee\frmEmpAddEdit.resx">
       <DependentUpon>frmEmpAddEdit.cs</DependentUpon>
     </EmbeddedResource>

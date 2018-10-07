@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace Inventory
 {
-    public partial class frm_Login : Form
+    internal partial class frm_Login : BaseForm
     {
         private DAL_New _dal;
         private MessageBoxes _msgBoxes;
