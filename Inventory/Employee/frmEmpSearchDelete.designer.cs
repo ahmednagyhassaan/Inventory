@@ -1,4 +1,6 @@
-﻿namespace Inventory
+﻿using Inventory.CustomControls;
+
+namespace Inventory
 {
     partial class FrmEmpSearchDelete
     {
@@ -38,18 +40,17 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_Search = new System.Windows.Forms.Button();
+            this.txtEmpID = new Inventory.CustomControls.NumTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dgv_Emp_Find = new System.Windows.Forms.DataGridView();
             this.btn_Delete = new System.Windows.Forms.Button();
             this.btn_Edit = new System.Windows.Forms.Button();
             this.btn_Add = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txtEmpID = new Inventory.NumTextBox();
+            this.PgdDGV = new Inventory.CustomControls.PagedDataGridView();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Emp_Find)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -174,6 +175,16 @@
             this.btn_Search.UseVisualStyleBackColor = true;
             this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
             // 
+            // txtEmpID
+            // 
+            this.txtEmpID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtEmpID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtEmpID.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtEmpID.Location = new System.Drawing.Point(90, 3);
+            this.txtEmpID.Name = "txtEmpID";
+            this.txtEmpID.Size = new System.Drawing.Size(559, 23);
+            this.txtEmpID.TabIndex = 28;
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.txtEmpName);
@@ -182,24 +193,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(559, 38);
             this.panel1.TabIndex = 29;
-            // 
-            // dgv_Emp_Find
-            // 
-            this.dgv_Emp_Find.AllowUserToAddRows = false;
-            this.dgv_Emp_Find.AllowUserToDeleteRows = false;
-            this.dgv_Emp_Find.AllowUserToOrderColumns = true;
-            this.dgv_Emp_Find.AllowUserToResizeRows = false;
-            this.dgv_Emp_Find.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_Emp_Find.BackgroundColor = System.Drawing.Color.White;
-            this.dgv_Emp_Find.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgv_Emp_Find.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Emp_Find.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_Emp_Find.Location = new System.Drawing.Point(0, 197);
-            this.dgv_Emp_Find.Name = "dgv_Emp_Find";
-            this.dgv_Emp_Find.ReadOnly = true;
-            this.dgv_Emp_Find.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Emp_Find.Size = new System.Drawing.Size(658, 294);
-            this.dgv_Emp_Find.TabIndex = 33;
             // 
             // btn_Delete
             // 
@@ -267,15 +260,14 @@
             this.panel2.Size = new System.Drawing.Size(658, 43);
             this.panel2.TabIndex = 38;
             // 
-            // txtEmpID
+            // PgdDGV
             // 
-            this.txtEmpID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.txtEmpID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtEmpID.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtEmpID.Location = new System.Drawing.Point(90, 3);
-            this.txtEmpID.Name = "txtEmpID";
-            this.txtEmpID.Size = new System.Drawing.Size(559, 23);
-            this.txtEmpID.TabIndex = 28;
+            this.PgdDGV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PgdDGV.Location = new System.Drawing.Point(0, 197);
+            this.PgdDGV.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.PgdDGV.Name = "PgdDGV";
+            this.PgdDGV.Size = new System.Drawing.Size(658, 294);
+            this.PgdDGV.TabIndex = 39;
             // 
             // FrmEmpSearchDelete
             // 
@@ -284,7 +276,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(658, 534);
-            this.Controls.Add(this.dgv_Emp_Find);
+            this.Controls.Add(this.PgdDGV);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.panel2);
@@ -293,13 +285,12 @@
             this.MaximizeBox = false;
             this.Name = "FrmEmpSearchDelete";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " Employee Search";
+            this.Text = "  Employee Search";
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Emp_Find)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -316,7 +307,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cmbSrchWay;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgv_Emp_Find;
         private System.Windows.Forms.Button btn_Search;
         private System.Windows.Forms.Button btn_Delete;
         private System.Windows.Forms.Button btn_Edit;
@@ -326,5 +316,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel2;
+        private PagedDataGridView PgdDGV;
     }
 }

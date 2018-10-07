@@ -6,12 +6,11 @@ using Inventory.Employee;
 
 namespace Inventory
 {
-    public partial class FrmEmpSearchDelete : Form
+    internal partial class FrmEmpSearchDelete : BaseForm
     {
         private readonly BLLfrmEmpSearchDelete _bll = new BLLfrmEmpSearchDelete();
         private readonly MessageBoxes _messageBoxes = new MessageBoxes();
         private readonly AutoCompleteStringCollection _autoCompleteStringCollection = new AutoCompleteStringCollection();
-        private readonly BindingSource _bindingSource=new BindingSource();
         public FrmEmpSearchDelete()
         {
             InitializeComponent();
@@ -25,7 +24,7 @@ namespace Inventory
             txtEmpID.Text = "";
             txtEmpName.Text = "";
             cmbDept.DataSource = null;
-            dgv_Emp_Find.DataSource = null;
+            PgdDGV.DataSource = null;
             if (cmbSrchWay.SelectedItem == "All")
             {
                 groupBox1.Enabled = false;
@@ -87,7 +86,8 @@ namespace Inventory
                     if (sqlParameters.Count != 0)
                     {
                         sqlCmdText = sqlCmdText.Remove(sqlCmdText.Length - 4, 4);
-                        dgv_Emp_Find.DataSource = _bll.GetEmpDataTable(sqlCmdText, sqlParameters.ToArray());
+                        PgdDGV.DataSource = _bll.GetEmpDataTable(sqlCmdText, sqlParameters.ToArray());
+                      
                     }
                     else
                     {
@@ -98,7 +98,8 @@ namespace Inventory
                 }
                 else
                 {
-                    dgv_Emp_Find.DataSource = _bindingSource.DataSource= _bll.GetEmpDataTable(sqlCmdText);
+                    PgdDGV.DataSource = _bll.GetEmpDataTable(sqlCmdText);
+                    PgdDGV.DataSource= _bll.GetEmpDataTable(sqlCmdText);
                 }
 
             }
@@ -111,35 +112,35 @@ namespace Inventory
 
       private void btn_Edit_Click(object sender, EventArgs e)
         {
-            try
-            {
-                int currentID = Convert.ToInt32(dgv_Emp_Find.CurrentRow.Cells[0].Value);
-                frmEmpAddEdit f1 = new frmEmpAddEdit(currentID, "edit");
-                this.Close();
-                f1.ShowDialog();
+        //    try
+        //    {
+        //        int currentID = Convert.ToInt32(PgdDGV.CurrentRow.Cells[0].Value);
+        //        frmEmpAddEdit f1 = new frmEmpAddEdit(currentID, "edit");
+        //        this.Close();
+        //        f1.ShowDialog();
 
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(" you must select  Employee first");
-            }
-        }
+        //    }
+        //    catch (Exception exp)
+        //    {
+        //        MessageBox.Show(" you must select  Employee first");
+        //    }
+        //}
 
-        private void btn_View_Details_Click(object sender, EventArgs e)
-        {
+        //private void btn_View_Details_Click(object sender, EventArgs e)
+        //{
 
-            try
-            {
-                int currentID = Convert.ToInt32(dgv_Emp_Find.CurrentRow.Cells[0].Value);
-                frmEmpAddEdit f1 = new frmEmpAddEdit(currentID, "view");
-                f1.ShowDialog();
-                this.Close();
-            }
-            catch (Exception exp)
-            {
+        //    try
+        //    {
+        //        int currentID = Convert.ToInt32(dgv_Emp_Find.CurrentRow.Cells[0].Value);
+        //        frmEmpAddEdit f1 = new frmEmpAddEdit(currentID, "view");
+        //        f1.ShowDialog();
+        //        this.Close();
+        //    }
+        //    catch (Exception exp)
+        //    {
 
-                MessageBox.Show(" you must select  Employee first");
-            }
+        //        MessageBox.Show(" you must select  Employee first");
+        //    }
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)
