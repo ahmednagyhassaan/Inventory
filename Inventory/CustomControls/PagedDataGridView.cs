@@ -24,8 +24,8 @@ namespace Inventory.CustomControls
             {
                 _dt = value;
                 _totalRecords = _dt == null ? 0 : _dt.Rows.Count;
-                lblTotalCount.Text = _dt != null && _dt.Rows.Count > 0? $"Total count: {_totalRecords}":string.Empty;
-                Enabled = _dt != null && _dt.Rows.Count>0;
+                lblTotalCount.Text = _dt != null && _dt.Rows.Count > 0 ? $"Total count: {_totalRecords}" : string.Empty;
+                Enabled = _dt != null && _dt.Rows.Count > 0;
                 bindingSource.DataSource = _dt == null ? null : new PageOffsetList();
             }
         }
@@ -35,7 +35,7 @@ namespace Inventory.CustomControls
             get { return dataGridView1; }
         }
 
-       #endregion
+        #endregion
 
 
         public PagedDataGridView()
@@ -53,11 +53,21 @@ namespace Inventory.CustomControls
                 dataGridView1.DataSource = null;
                 return;
             }
-            int offset =(int?) bindingSource.Current ?? 0;
+            int offset = (int?)bindingSource.Current ?? 0;
             DataTable x = _dt.Clone();
             for (int i = offset; i < offset + pageSize && i < _totalRecords; i++)
                 x.ImportRow(_dt.Rows[i]);
             dataGridView1.DataSource = x;
+            FormatGrid();
+        }
+
+        private void FormatGrid()
+        {
+            for (int i = 0; i < dataGridView1.RowCount-1; i++)
+            {
+                if (i % 2 == 0)
+                    dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.AliceBlue;
+            }
         }
 
         private void txtPageSize_Leave(object sender, EventArgs e)
@@ -105,20 +115,13 @@ namespace Inventory.CustomControls
                     try
                     {
                         pageSize = Convert.ToInt16(value);
-                        TextBox.Text= value;
+                        TextBox.Text = value;
                     }
-                    catch (Exception){}
+                    catch (Exception) { }
                 }
             }
         }
 
-        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            if (e.RowIndex%2 == 0)
-            {
-                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor=Color.Red;
-            }
-        }
     }
 
 }
