@@ -47,5 +47,6 @@ namespace Inventory
                 _msgBoxes.ErrorMsgBox(ex.Message);
             }
         }
+
     }
 }

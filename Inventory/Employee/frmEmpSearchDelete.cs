@@ -113,7 +113,7 @@ namespace Inventory
         private void DisplayOnlyColumns(string[] ColNameArray)
         {
             PgdDGV.SuspendLayout();
-            foreach (DataGridViewColumn col in PgdDGV.DataGridView.Columns)
+            foreach (DataGridViewColumn col in PgdDGV.Columns)
             {
                 if (ColNameArray.Contains(col.Name))
                     col.Visible = true;
@@ -207,9 +207,9 @@ namespace Inventory
 
         private void btnDetails_Click(object sender, EventArgs e)
         {
-            if (PgdDGV.DataGridView.SelectedRows.Count != 0)
+            if (PgdDGV.SelectedRows.Count != 0)
             {
-                using (var x = new frmEmpAddEdit(((DataTable)PgdDGV.DataGridView.DataSource).Copy().Select($"Emp_ID={PgdDGV.DataGridView.SelectedRows[0].Cells[0].Value}").CopyToDataTable()))
+                using (var x = new frmEmpAddEdit(((DataTable)PgdDGV.DataSource).Copy().Select($"Emp_ID={PgdDGV.SelectedRows[0].Cells[0].Value}").CopyToDataTable()))
                 {
                     x.ShowDialog();
                 }

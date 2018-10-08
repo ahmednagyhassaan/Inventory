@@ -28,11 +28,16 @@ namespace Inventory.CustomControls
                 Enabled = _dt != null && _dt.Rows.Count > 0;
                 bindingSource.DataSource = _dt == null ? null : new PageOffsetList();
             }
+            get { return (DataTable) dataGridView1.DataSource; }
         }
 
-        public DataGridView DataGridView
+        public DataGridViewSelectedRowCollection SelectedRows
         {
-            get { return dataGridView1; }
+            get { return dataGridView1.SelectedRows; }
+        }
+        public DataGridViewColumnCollection Columns
+        {
+            get { return dataGridView1.Columns; }
         }
 
         #endregion
@@ -77,7 +82,10 @@ namespace Inventory.CustomControls
                 pageSize = Convert.ToInt16(txtPageSize.Text);
 
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+                txtPageSize.Text = pageSize.ToString();
+            }
             bindingSource.DataSource = new PageOffsetList();
         }
 
@@ -117,7 +125,10 @@ namespace Inventory.CustomControls
                         pageSize = Convert.ToInt16(value);
                         TextBox.Text = value;
                     }
-                    catch (Exception) { }
+                    catch (Exception)
+                    {
+                       
+                    }
                 }
             }
         }
