@@ -4,6 +4,10 @@ namespace Inventory
 {
     class BaseForm : Form
     {
+        public enum Mode
+        {
+            Add,Edit,Delete,Detail
+        }
         public override string Text
         {
             get { return base.Text.Remove(0, base.Text.IndexOf('-') + 1); }

@@ -1,6 +1,8 @@
 ﻿using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.IO;
 
 namespace Inventory.Employee
 {
@@ -54,6 +56,14 @@ namespace Inventory.Employee
             DataTable dt = new DataTable();
             dt = _dal.ExecuteQuery(query, sqlParameters);
             return dt;
+        }
+
+        public Image convertByteArrayToImage(byte[] byteArray)
+        {
+           using (MemoryStream stream=new MemoryStream(byteArray,0,byteArray.Length,true))
+            {
+                return Image.FromStream(stream);
+            }
         }
     }
 }

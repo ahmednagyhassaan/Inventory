@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using Inventory.Employee;
 
@@ -10,13 +11,25 @@ namespace Inventory
         private DataTable _dt;
         private BLLEmployee _bll=new BLLEmployee();
 
-        public frmEmpAddEdit(DataTable dt)
+        public frmEmpAddEdit(Mode mode, DataTable dt=null)
         {
             InitializeComponent();
-            _dt = dt;
+            if (dt != null)
+            {
+                _dt = dt;
+                BindProperities();
+            }
             _bll.FillCmbDepartment(cbo_Dept_Name);
             cbo_Dept_Name.AutoCompleteCustomSource = _bll.FillAutoCompleteStringCollectionWithDeptName();
-            BindProperities();
+            switch (mode)
+            {
+                  case  Mode.Detail:
+                    pnlMaster.Enabled = false;
+                    break;
+                default:
+                    pnlMaster.Enabled = true;
+                    break;
+            }
         }
 
         private void BindProperities()
@@ -30,6 +43,20 @@ namespace Inventory
             dtp_Hire_Date.DataBindings.Add("Value", _dt, "Hire_Date", Enabled, DataSourceUpdateMode.Never, DateTime.MinValue);
             cbo_Dept_Name.DataBindings.Add("SelectedValue", _dt, "Dept_ID", Enabled, DataSourceUpdateMode.Never, string.Empty);
             txt_Phone.DataBindings.Add("Text", _dt, "phone", Enabled, DataSourceUpdateMode.Never, string.Empty);
+            PicEmp.Image = _bll.convertByteArrayToImage((byte[]) _dt.Rows[0]["Pic"]);
+        }
+
+        private void btnChangePic_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                PicEmp.Image=Image.FromFile(openFileDialog.FileName);
+            }
+        }
+
+        private void btnRemovePic_Click(object sender, EventArgs e)
+        {
+            PicEmp.Image = null;
         }
 
         //{ SqlConnection con =new SqlConnection("Data Source=.;Initial Catalog=Project;Integrated Security=True");

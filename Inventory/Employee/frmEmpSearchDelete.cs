@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Inventory.Employee;
@@ -60,7 +61,7 @@ namespace Inventory
         {
             try
             {
-                String sqlCmdText = "SELECT e.Emp_ID, e.Name,d.Name AS DepartmentName,d.Dept_ID,e.Date_Of_Birth,e.Certifications,e.Address,e.Salary,e.Hire_Date,e.Dept_ID,e.phone from dbo.Employee e JOIN dbo.Department d ON e.Dept_ID = d.Dept_ID";
+                String sqlCmdText = "SELECT e.Emp_ID, e.Name,d.Name AS DepartmentName,d.Dept_ID,e.Date_Of_Birth,e.Certifications,e.Address,e.Salary,e.Hire_Date,e.Dept_ID,e.phone,e.Pic from dbo.Employee e JOIN dbo.Department d ON e.Dept_ID = d.Dept_ID";
                 if (groupBox1.Enabled)
                 {
                     sqlCmdText += " Where ";
@@ -209,10 +210,23 @@ namespace Inventory
         {
             if (PgdDGV.SelectedRows.Count != 0)
             {
-                using (var x = new frmEmpAddEdit(((DataTable)PgdDGV.DataSource).Copy().Select($"Emp_ID={PgdDGV.SelectedRows[0].Cells[0].Value}").CopyToDataTable()))
+                using (var x = new frmEmpAddEdit(Mode.Detail,
+                    PgdDGV.DataSource
+                    .Copy()
+                    .Select($"Emp_ID={PgdDGV.SelectedRows[0].Cells["Emp_ID"].Value}")
+                    .CopyToDataTable()))
                 {
+                    x.Text+= $" '{PgdDGV.SelectedRows[0].Cells["Name"].Value}'";
                     x.ShowDialog();
                 }
+            }
+        }
+
+        private void btn_Add_Click(object sender, EventArgs e)
+        {
+            using (var x = new frmEmpAddEdit(Mode.Add))
+            {
+                x.ShowDialog();
             }
         }
     }

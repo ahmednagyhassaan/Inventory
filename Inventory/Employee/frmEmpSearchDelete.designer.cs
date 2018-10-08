@@ -231,6 +231,7 @@ namespace Inventory
             this.btn_Add.TabIndex = 34;
             this.btn_Add.Text = "Add Employee";
             this.btn_Add.UseVisualStyleBackColor = true;
+            this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -276,6 +277,7 @@ namespace Inventory
             // PgdDGV
             // 
             this.PgdDGV.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PgdDGV.DataSource = null;
             this.PgdDGV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PgdDGV.Enabled = false;
             this.PgdDGV.Location = new System.Drawing.Point(0, 197);
