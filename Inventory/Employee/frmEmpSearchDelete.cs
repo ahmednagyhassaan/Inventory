@@ -36,7 +36,7 @@ namespace Inventory
                 groupBox1.Enabled = true;
                 try
                 {
-                    _bll.FillCmbDepartment(cmbDept);
+                    _bll.FillCmbDepartment(ref cmbDept);
                     txtEmpID.AutoCompleteCustomSource = _bll.FillAutoCompleteStringCollectionWithEmpId();
                     txtEmpName.AutoCompleteCustomSource = _bll.FillAutoCompleteStringCollectionWithEmpName();
                     cmbDept.AutoCompleteCustomSource = _bll.FillAutoCompleteStringCollectionWithDeptName();
@@ -212,7 +212,6 @@ namespace Inventory
             {
                 using (var x = new frmEmpAddEdit(Mode.Detail,
                     PgdDGV.DataSource
-                    .Copy()
                     .Select($"Emp_ID={PgdDGV.SelectedRows[0].Cells["Emp_ID"].Value}")
                     .CopyToDataTable()))
                 {

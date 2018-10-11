@@ -50,6 +50,8 @@
             this.dtp_Hire_Date = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.txt_Phone = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlPic = new System.Windows.Forms.Panel();
             this.PicEmp = new System.Windows.Forms.PictureBox();
@@ -135,6 +137,7 @@
             this.cbo_Dept_Name.Name = "cbo_Dept_Name";
             this.cbo_Dept_Name.Size = new System.Drawing.Size(315, 24);
             this.cbo_Dept_Name.TabIndex = 7;
+            this.cbo_Dept_Name.SelectedValueChanged += new System.EventHandler(this.cbo_Dept_Name_SelectedValueChanged);
             // 
             // btn_Save
             // 
@@ -194,12 +197,15 @@
             this.tableLayoutPanel1.Controls.Add(this.dtp_Hire_Date, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.cbo_Dept_Name, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label10, 0, 8);
-            this.tableLayoutPanel1.Controls.Add(this.txt_Phone, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.label10, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.txt_Phone, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.comboBox1, 1, 8);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 19);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 9;
+            this.tableLayoutPanel1.RowCount = 10;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -294,7 +300,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 254);
+            this.label10.Location = new System.Drawing.Point(3, 284);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(43, 16);
             this.label10.TabIndex = 22;
@@ -303,10 +309,29 @@
             // txt_Phone
             // 
             this.txt_Phone.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_Phone.Location = new System.Drawing.Point(112, 257);
+            this.txt_Phone.Location = new System.Drawing.Point(112, 287);
             this.txt_Phone.Name = "txt_Phone";
             this.txt_Phone.Size = new System.Drawing.Size(315, 23);
             this.txt_Phone.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 254);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(63, 16);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "Manager:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(112, 257);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(315, 24);
+            this.comboBox1.TabIndex = 25;
             // 
             // panel1
             // 
@@ -429,10 +454,8 @@
         private System.Windows.Forms.TextBox txt_Certification;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txt_Phone;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DateTimePicker dtp_Hire_Date;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dtp_Date_Bith;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -446,5 +469,9 @@
         private System.Windows.Forms.PictureBox PicEmp;
         private System.Windows.Forms.Panel pnlMaster;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txt_Phone;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
