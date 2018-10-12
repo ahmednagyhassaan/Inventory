@@ -19,7 +19,7 @@ namespace Inventory
                 _dt = dt;
                 BindProperities();
             }
-            _bll.FillCmbDepartment(cbo_Dept_Name);
+            _bll.FillCmbDepartment(ref cbo_Dept_Name);
             cbo_Dept_Name.AutoCompleteCustomSource = _bll.FillAutoCompleteStringCollectionWithDeptName();
             switch (mode)
             {
@@ -43,7 +43,7 @@ namespace Inventory
             dtp_Hire_Date.DataBindings.Add("Value", _dt, "Hire_Date", Enabled, DataSourceUpdateMode.Never, DateTime.MinValue);
             cbo_Dept_Name.DataBindings.Add("SelectedValue", _dt, "Dept_ID", Enabled, DataSourceUpdateMode.Never, string.Empty);
             txt_Phone.DataBindings.Add("Text", _dt, "phone", Enabled, DataSourceUpdateMode.Never, string.Empty);
-            PicEmp.Image = _bll.convertByteArrayToImage((byte[]) _dt.Rows[0]["Pic"]);
+            PicEmp.Image = _dt.Rows[0]["Pic"]==DBNull.Value? PicEmp.ErrorImage:_bll.ConvertByteArrayToImage((byte[]) _dt.Rows[0]["Pic"]);
         }
 
         private void btnChangePic_Click(object sender, EventArgs e)
@@ -56,7 +56,12 @@ namespace Inventory
 
         private void btnRemovePic_Click(object sender, EventArgs e)
         {
-            PicEmp.Image = null;
+            PicEmp.Image = PicEmp.InitialImage;
+        }
+
+        private void cbo_Dept_Name_SelectedValueChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void btn_Save_Click(object sender, EventArgs e)

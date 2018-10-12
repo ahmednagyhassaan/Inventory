@@ -36,7 +36,7 @@ namespace Inventory
                 groupBox1.Enabled = true;
                 try
                 {
-                    _bll.FillCmbDepartment(cmbDept);
+                    _bll.FillCmbDepartment(ref cmbDept);
                     txtEmpID.AutoCompleteCustomSource = _bll.FillAutoCompleteStringCollectionWithEmpId();
                     txtEmpName.AutoCompleteCustomSource = _bll.FillAutoCompleteStringCollectionWithEmpName();
                     cmbDept.AutoCompleteCustomSource = _bll.FillAutoCompleteStringCollectionWithDeptName();
