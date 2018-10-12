@@ -59,6 +59,11 @@ namespace Inventory
             PicEmp.Image = null;
         }
 
+        private void btn_Save_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //{ SqlConnection con =new SqlConnection("Data Source=.;Initial Catalog=Project;Integrated Security=True");
         //    public string edit_or_add = "";
         //    public int IID;

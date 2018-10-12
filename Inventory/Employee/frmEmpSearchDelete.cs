@@ -208,11 +208,11 @@ namespace Inventory
 
         private void btnDetails_Click(object sender, EventArgs e)
         {
-            if (PgdDGV.SelectedRows.Count != 0)
+            if (PgdDGV.SelectedRows.Count != 0)//لو اختارت سطر واحد من الجردة 
             {
-                using (var x = new frmEmpAddEdit(Mode.Detail,
+                using (frmEmpAddEdit x = new frmEmpAddEdit
+                    (Mode.Detail,
                     PgdDGV.DataSource
-                    .Copy()
                     .Select($"Emp_ID={PgdDGV.SelectedRows[0].Cells["Emp_ID"].Value}")
                     .CopyToDataTable()))
                 {

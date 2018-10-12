@@ -147,6 +147,7 @@
             this.btn_Save.TabIndex = 14;
             this.btn_Save.Text = "Save";
             this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // btn_Close
             // 
@@ -294,7 +295,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 251);
+            this.label10.Location = new System.Drawing.Point(3, 254);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(43, 16);
             this.label10.TabIndex = 22;
@@ -303,7 +304,7 @@
             // txt_Phone
             // 
             this.txt_Phone.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txt_Phone.Location = new System.Drawing.Point(112, 254);
+            this.txt_Phone.Location = new System.Drawing.Point(112, 257);
             this.txt_Phone.Name = "txt_Phone";
             this.txt_Phone.Size = new System.Drawing.Size(315, 23);
             this.txt_Phone.TabIndex = 8;

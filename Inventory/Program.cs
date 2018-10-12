@@ -12,7 +12,7 @@ namespace Inventory
           frm_Login ob1 = new frm_Login();
             if (ob1.ShowDialog() == DialogResult.OK)
             {
-               Application.Run(new Frm_Main(ob1.txtName.Text));
+               Application.Run(new Frm_Main(ob1.txtUserName.Text));
             }
        }
     }
